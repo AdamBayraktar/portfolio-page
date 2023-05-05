@@ -19,3 +19,5 @@ $(function()
     new WOW().init();
     $(".rotate").textrotator();
 })
+
+const toTheTop = () => window.scrollTo({top: 0, behavior: 'smooth'});

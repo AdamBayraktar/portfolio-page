@@ -1,13 +1,44 @@
 :root {
+    /* general */
     --main-bg-color: #0d0d0dee;
+    --second-bg-color: #272626;
     --main-font-color: #999;
-
+    --light: #d8dbe0;
+    --dark: #28292c;
+    --link: rgb(27, 129, 112);
+    --link-hover: rgb(24, 94, 82);
+    --theme-opposite-color: white;
+    --theme-color: black;
+    --general-h-color: white;
+    /* home section  */
+    --home-h1-color: #D43F52;
+    --main-bg-img: url('../images/home-bg.webp');
+    /* about section */
+    --progress-bar-background-color: white;
+    --progress-background-color: white;
+    --prgoress-bar-color: white;
 }
 
 
-.dark {
-    --main-bg-color: #f4ececee;
+.light {
+    /* general */
+    --theme-color: white;
+    --theme-opposite-color: black;
+    --main-bg-color: #e2e2e2ee;
+    --general-h-color: #424040;
+    /* --second-bg-color: #aaaaaaee; */
+    --second-bg-color: rgb(249, 249, 249);
     --main-font-color: #302f2f;
+    /* home section  */
+    --home-h1-color: #da5c5c;
+    /* --home-h1-color: #ffffff; */
+    --main-bg-img: url('../images/home-bg-light.webp');
+    /* about section */
+    --progress-bar-background-color: white;
+    --progress-background-color: white;
+    --prgoress-bar-color: ##2f2f2f;
+    --dark: white;
+    --light: #adadad;
 }
 
 body
@@ -52,7 +83,8 @@ footer .fp-tableCell
 /* start all heading */
 h1,h2,h3,h4,h5
     {
-        color: #ffffff;
+        color: var(--general-h-color);
+        /* color: #ffffff; */
         font-weight: bold;
     }
 /* end all heading */
@@ -197,10 +229,70 @@ h1,h2,h3,h4,h5
 
 /* end of to top button  */
 
+/* dark light toggler */
+
+
+.toggle-switch {
+    position: absolute;
+    z-index: 2;
+    top: 2%;
+    right: -40px;
+    width: 200px;
+    
+    & label {
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        background-color: var(--dark);
+        border-radius: 50px;
+        cursor: pointer;
+    }
+  
+    & input {
+        position: absolute;
+        display: none;
+    }
+  
+    .slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        transition: 0.3s;
+    }
+    
+    & input:checked ~ .slider {
+        background-color: var(--light);
+    }
+    
+    .slider::before {
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 16px;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        box-shadow: inset 28px -4px 0px 0px var(--light);
+        background-color: var(--dark);
+        transition: 0.9s;
+    }
+    
+    & input:checked ~ .slider::before {
+        transform: translateX(95px);
+        background-color: var(--dark);
+        box-shadow: none;
+    }
+    scale: 0.4;  
+}
+
+/* end of toggler */
+
 /* start home */       
 #home
 	{
-        background: url('../images/home-bg.webp');
+        background: var(--main-bg-img);
+        /* background: url('../images/home-bg.webp'); */
         background-size: cover;
         background-repeat: no-repeat;
         padding-top: 120px;
@@ -209,8 +301,8 @@ h1,h2,h3,h4,h5
 	}
 #home h1
     {
-        border: 2px solid #D43F52;
-        color: #D43F52;
+        border: 2px solid var(--home-h1-color);
+        color: var(--home-h1-color);
         display: inline-block;
         letter-spacing: 6px;
         padding: 25px 35px;
@@ -243,14 +335,15 @@ h1,h2,h3,h4,h5
 /* start work */
 #work
     {
-        background: #272626;
+        background: var(--second-bg-color);
         /* background: #1a1a1a; */
+        padding-top: 150px;
+        padding-bottom: 150px;
     }
 #work h2
     {
         text-align: center;
         margin-bottom: 30px;
-
     }
 
 #work .media
@@ -275,8 +368,8 @@ h1,h2,h3,h4,h5
 #work .media .fa:hover
     {
         background: #ffffff;
-        cursor: pointer;
     }
+
 #work .media .media-heading
     {
         font-weight: 600;
@@ -288,7 +381,12 @@ h1,h2,h3,h4,h5
 /* start about */
 #about
     {
-        padding-top: 2%;
+        padding-top: 150px;
+        padding-bottom: 150px;
+        background-color: var(--main-bg-color);
+        & h2 {
+            color: var(--theme-opposite-color);
+        }
     }
 
 #about h4
@@ -299,7 +397,8 @@ h1,h2,h3,h4,h5
 #about .progress
     {
         border-radius: 4px;
-        background: #ffffff;
+        /* background: #ffffff; */
+        background: var(--progress-bar-background-color);
         height: 4px;
     }
 #about .progress .progress-bar-danger
@@ -312,7 +411,8 @@ h1,h2,h3,h4,h5
     }
 #about span
     {
-        color: #ffffff;
+        /* color: #ffffff; */
+        color: var(--prgoress-bar-color);
         font-weight: bold;
         display: block;
         padding-bottom: 6px;
@@ -332,7 +432,7 @@ h1,h2,h3,h4,h5
 /* start portfolio */
 #portfolio
     {
-        background: #1a1a1a;
+        background: var(--second-bg-color);
         text-align: center;
     }
 #portfolio h2
@@ -377,16 +477,23 @@ h1,h2,h3,h4,h5
 
 /* start contact */
 
+#contact
+    {
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+
 #contact address
     {
-      padding-bottom: 18px;
+        padding-bottom: 18px;
+        
     }
 	
 #contact h2
     {
         text-align: center;
-        margin-bottom: 30px;
-
+        margin-bottom: 70px;
+        color: var(--theme-opposite-color)
     }
 
 #contact .contact-title
@@ -432,7 +539,7 @@ h1,h2,h3,h4,h5
 
 #contact .contact-col
     {
-        padding-top: 8%;
+        /* padding-top: 8%; */
         font-size: 1.1rem;
     }
 
@@ -446,6 +553,7 @@ footer
         text-align: center;
         padding-top: 40px;
         padding-bottom: 20px;
+        background: var(--second-bg-color);
     }
 footer hr
     {

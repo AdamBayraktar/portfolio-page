@@ -6,7 +6,7 @@ $(document).ready(function() {
 				'scrollingSpeed': 300,
 				'autoScrolling': false,
 				'css3': true,
-				'navigation': true,
+				'navigation': false,
 				'navigationPosition': 'right',
 				'fitToSection': false,
 			});
@@ -20,4 +20,11 @@ $(function()
     $(".rotate").textrotator();
 })
 
+
+function switchTheme() {
+	// let body = document.getElementById("wholeBody");
+	document.querySelector('body').classList.toggle("light");
+}
 const toTheTop = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+// const colorToggler = () => 

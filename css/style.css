@@ -236,19 +236,21 @@ h1,h2,h3,h4,h5
     position: absolute;
     z-index: 2;
     top: 2%;
-    right: -40px;
+    right: 0;
     width: 200px;
-    
-    & label {
-        position: absolute;
+}
+
+.toggle-switch label {
+    position: absolute;
         width: 100%;
         height: 100px;
         background-color: var(--dark);
         border-radius: 50px;
         cursor: pointer;
+        scale: 0.4;  
     }
   
-    & input {
+    .toggle-switch input {
         position: absolute;
         display: none;
     }
@@ -261,7 +263,7 @@ h1,h2,h3,h4,h5
         transition: 0.3s;
     }
     
-    & input:checked ~ .slider {
+    .toggle-switch input:checked ~ .slider {
         background-color: var(--light);
     }
     
@@ -278,13 +280,11 @@ h1,h2,h3,h4,h5
         transition: 0.9s;
     }
     
-    & input:checked ~ .slider::before {
+    .toggle-switch input:checked ~ .slider::before {
         transform: translateX(95px);
         background-color: var(--dark);
         box-shadow: none;
     }
-    scale: 0.4;  
-}
 
 /* end of toggler */
 
@@ -384,9 +384,11 @@ h1,h2,h3,h4,h5
         padding-top: 150px;
         padding-bottom: 150px;
         background-color: var(--main-bg-color);
-        & h2 {
-            color: var(--theme-opposite-color);
-        }
+    }
+
+#about h2 
+    {
+        color: var(--theme-opposite-color);
     }
 
 #about h4
